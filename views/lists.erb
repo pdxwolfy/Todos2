@@ -1,0 +1,16 @@
+<ul id="lists">
+  <% lists_in_sequence do |list, list_id| %>
+    <li class="<%= list_class(list) %>">
+      <a href="/lists/<%= list_id %>">
+        <h2><%= list[:name] %></h2>
+        <p>
+          <%= count_open_todos(list) %>/<%= count_all_todos(list) %>
+        </p>
+      </a>
+    </li>
+  <% end %>
+</ul>
+
+<% content_for :header_links do %>
+  <a href="/lists/new" class="add">New List</a>
+<% end %>
